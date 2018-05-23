@@ -1,6 +1,7 @@
 # NgxCheckbox
 
-Implement custom Checkbox compatible with all the brosers.
+Implement custom Checkbox compatible with all the browsers.
+Set your icon and style.
 
 ## Getting Started
 
