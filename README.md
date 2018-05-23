@@ -1,6 +1,6 @@
 # NgxCheckbox
 
-Implement custom Checkbox compatible with all the browsers.
+Implement a custom Checkbox compatible with all the browsers.
 Set your icon and style.
 
 ## Getting Started
@@ -12,11 +12,11 @@ npm install ngx-checkbox --save
 
 Add to NgModule imports:
 ```
-import { NgxCheckbox } from 'ngx-checkbox';
+import { NgxCheckboxModule } from 'ngx-checkbox';
 
 @NgModule({
   ...
-  imports: [NgxCheckbox,...]
+  imports: [NgxCheckboxModule,...]
   ...
 })
 ```
