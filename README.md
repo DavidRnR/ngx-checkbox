@@ -3,6 +3,8 @@
 Implement a custom Checkbox compatible with all the browsers.
 Set your icon and style.
 
+![alt text](https://github.com/DavidRnR/ngx-checkbox/blob/master/src/assets/browsers.png)
+
 ## Getting Started
 
 Install `ngx-checkbox` from `npm`:
@@ -21,7 +23,7 @@ import { NgxCheckboxModule } from 'ngx-checkbox';
 })
 ```
 
-Add component to your page:
+#### Add component to your page:
 ```
     <-- Example with FontAwesome icon-->
     <ngx-checkbox [iconClass]="'fas fa-check'"> </ngx-checkbox>
