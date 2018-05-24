@@ -3,7 +3,9 @@
 Implement a custom Checkbox compatible with all the browsers.
 Set your icon and style.
 
-![alt text](https://github.com/DavidRnR/ngx-checkbox/blob/master/src/assets/browsers.png)
+<p align="center">
+  <img src="https://github.com/DavidRnR/ngx-checkbox/blob/master/src/assets/browsers.png">
+</p>
 
 ## Getting Started
 
