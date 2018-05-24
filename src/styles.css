@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.checkbox-checked {
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
+    border-radius: 2px;
+}
+
+.checkbox-no-checked {
+    background-color: grey;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+

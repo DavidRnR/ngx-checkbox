@@ -1,4 +1,7 @@
-<label class="ngx-checkbox" ngxCheckbox>
+<label class="ngx-checkbox" ngxCheckbox [checkedClass]="checkedClass" [nocheckedClass]="nocheckedClass"
+       [style.width.px]="size" [style.height.px]="size" [style.lineHeight.px]="size">
   <input type="checkbox" [checked]="(isChecked) ? true : null" (click)="onActionClick($event)" />
-  <span class="ngx-span-checkbox"><i class="ngx-icon-checkbox {{iconClass}}"></i></span>
+  <span class="ngx-span-checkbox">
+    <i class="ngx-icon-checkbox {{iconClass}}"></i>
+  </span>
 </label>

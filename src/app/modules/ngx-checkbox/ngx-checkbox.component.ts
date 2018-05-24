@@ -10,6 +10,10 @@ export class NgxCheckboxComponent {
 
   @Input() isChecked: boolean;
   @Input() iconClass: string;
+  @Input() checkedClass: string;
+  @Input() nocheckedClass: string;
+  @Input() size: number = 16;
+
   @Output() isClicked = new EventEmitter();
 
   @ViewChild(NgxCheckboxDirective) element;

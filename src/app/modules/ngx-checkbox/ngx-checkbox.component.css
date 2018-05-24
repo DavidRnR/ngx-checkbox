@@ -1,26 +1,24 @@
 label.ngx-checkbox {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #BDC3C7;
-    border-radius: 2px;
-    background-color: #BDC3C7;
+    display: block;
     cursor: pointer;
+    text-align: center;
 }
-label.ngx-checkbox input[type="checkbox"] { 
-    display: none; 
-}  
 
- label.ngx-checkbox input[type="checkbox"]:checked + .ngx-span-checkbox > .ngx-icon-checkbox {
+label.ngx-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+label.ngx-checkbox input[type="checkbox"]:checked+.ngx-span-checkbox>.ngx-icon-checkbox {
     opacity: 1;
-    color: white;
+    color: black;
 }
 
-label.ngx-checkbox input[type="checkbox"] + .ngx-span-checkbox > .ngx-icon-checkbox {
+label.ngx-checkbox input[type="checkbox"]+.ngx-span-checkbox>.ngx-icon-checkbox {
     opacity: 0;
-    color: white;
+    color: black;
 }
 
-label.ngx-checkbox .ngx-span-checkbox {
-    /* position: relative;
-    top: -10px; */
+.ngx-checkbox-default {
+    border: 1px solid black;
+    border-radius: 2px;
 }

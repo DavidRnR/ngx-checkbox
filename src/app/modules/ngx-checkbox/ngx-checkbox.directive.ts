@@ -5,6 +5,11 @@ import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angu
 })
 export class NgxCheckboxDirective implements AfterViewInit {
 
+    @Input() checkedClass: string;
+    @Input() nocheckedClass: string;
+
+    private defaultClass: string = 'ngx-checkbox-default';
+
     constructor(private element: ElementRef) {
 
     }
@@ -36,13 +41,39 @@ export class NgxCheckboxDirective implements AfterViewInit {
      */
     private setStyle() {
         if (this.element.nativeElement.children[0].checked) {
-            this.element.nativeElement.style.backgroundColor = '#002584';
-            this.element.nativeElement.style.border = '1px solid #002584';
+            // If there is not a custom class - Set a default
+            if (this.checkedClass) {
+                this.element.nativeElement.classList.remove(this.defaultClass);
+                this.element.nativeElement.classList.remove(this.nocheckedClass);
+                if (!this.hasClass(this.element.nativeElement, this.checkedClass)) {
+                    this.element.nativeElement.className += ' ' + this.checkedClass;
+                }
+            }
+            else if (!this.hasClass(this.element.nativeElement, this.defaultClass)) {
+                this.element.nativeElement.classList.remove(this.nocheckedClass);
+                this.element.nativeElement.className += ' ' + this.defaultClass;
+            }
         }
         else {
-            this.element.nativeElement.style.backgroundColor = '#BDC3C7';
-            this.element.nativeElement.style.border = '1px solid #BDC3C7';
+            // If there is not a custom class - Set a default
+            if (this.nocheckedClass) {
+                this.element.nativeElement.classList.remove(this.defaultClass);
+                this.element.nativeElement.classList.remove(this.checkedClass);
+                if (!this.hasClass(this.element.nativeElement, this.nocheckedClass)) {
+                    this.element.nativeElement.className += ' ' + this.nocheckedClass;
+                }
+            }
+            else if (!this.hasClass(this.element.nativeElement, this.defaultClass)) {
+                this.element.nativeElement.classList.remove(this.checkedClass);
+                this.element.nativeElement.className += ' ' + this.defaultClass;
+            }
+
         }
+    }
+
+    //Check if element has class
+    private hasClass(target: any, elementClassName: string) {
+        return new RegExp('(\\s|^)' + elementClassName + '(\\s|$)').test(target.className);
     }
 
     /**
