@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgxCheckboxComponent } from './modules/ngx-checkbox/ngx-checkbox.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  showMessage: boolean = false;
+
+  @ViewChild('myCheckbox') myCB: NgxCheckboxComponent;
+  
+  onShowMessage(event) {
+    this.showMessage = !this.showMessage;
+  }
+
+  onSetCheckBox() {
+    // Set 'checked' or 'no-checked'
+    this.myCB.setClick('checked');
+  }
 }

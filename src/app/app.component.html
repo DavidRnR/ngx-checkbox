@@ -1,3 +1,72 @@
-<ngx-checkbox [iconClass]="'fas fa-check'" [checkedClass]="'checkbox-checked'" [nocheckedClass]="'checkbox-no-checked'"
-    [size]="50">
-</ngx-checkbox>
+<mat-toolbar>NgxCheckBox</mat-toolbar>
+
+<mat-list>
+    <mat-list-item>
+        Fontawesome icon - Default
+
+        <!-- Fontawesome icon - Default -->
+        <ngx-checkbox [iconClass]="'fas fa-check'">
+        </ngx-checkbox>
+
+    </mat-list-item>
+    <mat-divider> </mat-divider>
+
+    <mat-list-item>
+        Example with FontAwesome icon && clicked by default
+
+        <!-- Example with FontAwesome icon && clicked by default-->
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="true"> </ngx-checkbox>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+
+    <mat-list-item>
+        Example with FontAwesome icon && call a function when is clicked
+
+        <!-- Example with FontAwesome icon && call a function when is clicked-->
+        <ngx-checkbox [iconClass]="'fas fa-check'" (isClicked)="onShowMessage($event)"> </ngx-checkbox>
+
+        <span *ngIf="showMessage">
+            <strong>NgxCheckBox works!</strong>
+        </span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item>
+        <p>Fontawesome icon - Class when is checked and when it is not.</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p>Add a class like custom-icon to the icon for bigger font-size and different color</p>
+        <!-- Fontawesome icon - Class when is checked and when it is not -->
+        <!-- Add a class like custom-icon to the icon for bigger font-size and different color-->
+
+        <!-- First Example -->
+        <ngx-checkbox [iconClass]="'fas fa-check custom-icon'" 
+                      [checkedClass]="'checkbox-checked'" 
+                      [nocheckedClass]="'checkbox-no-checked'"
+            [size]="22">
+        </ngx-checkbox>
+
+         <!-- Second Example -->
+         <ngx-checkbox [iconClass]="'fas fa-check other-custom-icon'" 
+                       [checkedClass]="'other-checkbox-checked'" 
+                       [nocheckedClass]="'checkbox-no-checked'"
+                       [size]="30">
+        </ngx-checkbox>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item>
+        Example with FontAwesome icon && Set clicked from Typescript
+
+        <!-- Example with FontAwesome icon && Set clicked from Typescript-->
+        <ngx-checkbox [iconClass]="'fas fa-check'" #myCheckbox> </ngx-checkbox>   
+            <div class="button-row">
+                <button mat-raised-button color="primary" (click)="onSetCheckBox()">Set clicked</button>
+            </div>
+            
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
