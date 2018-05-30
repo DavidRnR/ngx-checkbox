@@ -9,6 +9,7 @@ export class NgxCheckboxDirective implements AfterViewInit {
     @Input() nocheckedClass: string;
 
     private defaultClass: string = 'ngx-checkbox-default';
+    private defaultfocusClass: string = 'ngx-checkbox-focus-default'
 
     constructor(private element: ElementRef) {
 
@@ -28,19 +29,49 @@ export class NgxCheckboxDirective implements AfterViewInit {
     setCheckbox(status) {
         if (status && status === 'checked') {
             this.element.nativeElement.children[0].checked = true;
+            this.setAttributes('aria-checked', 'true');
             this.setStyle();
         }
         else if (status && status === 'no-checked') {
             this.element.nativeElement.children[0].checked = false;
+            this.setAttributes('aria-checked', 'false');
             this.setStyle();
         }
+    }
+
+    /**
+     * Set Focus Class if Exist
+     */
+    setFocusClass(focusClass: string) {
+        if (focusClass) {
+            if (!this.hasClass(this.element.nativeElement, focusClass)) {
+                this.element.nativeElement.className += ' ' + focusClass;
+            }
+            else {
+                this.element.nativeElement.classList.remove(focusClass);
+            }
+        }
+        else {
+            // Set Focus Default 
+            if (!this.hasClass(this.element.nativeElement, this.defaultfocusClass)) {
+                this.element.nativeElement.className += ' ' + this.defaultfocusClass;
+            }
+            else {
+                this.element.nativeElement.classList.remove(this.defaultfocusClass);
+            }
+        }
+
     }
 
     /**
      * Check if the Input-Checkbox if checked or not - Then apply the style
      */
     private setStyle() {
+
         if (this.element.nativeElement.children[0].checked) {
+            // Set ARIA
+            this.setAttributes('aria-checked', 'true');
+
             // If there is not a custom class - Set a default
             if (this.checkedClass) {
                 this.element.nativeElement.classList.remove(this.defaultClass);
@@ -55,6 +86,9 @@ export class NgxCheckboxDirective implements AfterViewInit {
             }
         }
         else {
+            // Set ARIA
+            this.setAttributes('aria-checked', 'false');
+
             // If there is not a custom class - Set a default
             if (this.nocheckedClass) {
                 this.element.nativeElement.classList.remove(this.defaultClass);
@@ -69,6 +103,14 @@ export class NgxCheckboxDirective implements AfterViewInit {
             }
 
         }
+    }
+
+    /**
+     * Set Attributes to the component like ARIA 
+     */
+    private setAttributes(attr: string, attrValue: string) {
+        // Set Attribute for the <span>
+        this.element.nativeElement.children[1].setAttribute(attr, attrValue);
     }
 
     //Check if element has class

@@ -1,7 +1,9 @@
-<label class="ngx-checkbox" ngxCheckbox [checkedClass]="checkedClass" [nocheckedClass]="nocheckedClass"
+<label class="ngx-checkbox" ngxCheckbox 
+       [checkedClass]="checkedClass" [nocheckedClass]="nocheckedClass" 
        [style.width.px]="size" [style.height.px]="size" [style.lineHeight.px]="size">
-  <input type="checkbox" [checked]="(isChecked) ? true : null" (click)="onActionClick($event)" />
-  <span class="ngx-span-checkbox">
+  <input type="checkbox" [checked]="(isChecked) ? true : null" (click)="onActionClick($event)"/>
+  <span class="ngx-span-checkbox" role="checkbox" aria-checked="true" [attr.tabindex]="tabIndex ? tabIndex : 0" 
+        (focus)="setFocusClass()" (focusout)="setFocusClass()">
     <i class="ngx-icon-checkbox {{iconClass}}"></i>
   </span>
 </label>

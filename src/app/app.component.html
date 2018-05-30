@@ -4,8 +4,8 @@
     <mat-list-item>
         Fontawesome icon - Default
 
-        <!-- Fontawesome icon - Default -->
-        <ngx-checkbox [iconClass]="'fas fa-check'">
+        <!-- Fontawesome icon - Default - Custom Focus-->
+        <ngx-checkbox [iconClass]="'fas fa-check'" [focusClass]="'custom-focus'">
         </ngx-checkbox>
 
     </mat-list-item>
@@ -69,4 +69,21 @@
             
     </mat-list-item>
     <mat-divider></mat-divider>
+
+    <mat-list-item>
+		Multiple && Set no-clicked from Typescript
+
+		<!-- Example with FontAwesome icon && Multiple - Set clicked from Typescript-->
+		<ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="true" #myMultiCheckbox> </ngx-checkbox>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="false" #myMultiCheckbox> </ngx-checkbox>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="true" #myMultiCheckbox> </ngx-checkbox>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="false" #myMultiCheckbox> </ngx-checkbox>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="true" #myMultiCheckbox> </ngx-checkbox>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [isChecked]="true" #myMultiCheckbox> </ngx-checkbox>
+		<div class="button-row">
+			<button mat-raised-button color="primary" (click)="onSetMultiCheckBox()">Default</button>
+		</div>
+
+	</mat-list-item>
+	<mat-divider></mat-divider>
 </mat-list>

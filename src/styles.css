@@ -29,7 +29,12 @@
     color: white !important;
 }
 
+.custom-focus {
+    box-shadow: 0 0 1pt 1pt red;
+}
+
 ngx-checkbox {
     margin-left: 15px;
     margin-right: 15px;
 }
+

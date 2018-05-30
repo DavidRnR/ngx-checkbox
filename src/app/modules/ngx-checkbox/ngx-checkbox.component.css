@@ -18,7 +18,18 @@ label.ngx-checkbox input[type="checkbox"]+.ngx-span-checkbox>.ngx-icon-checkbox 
     color: black;
 }
 
+label.ngx-checkbox input[type="checkbox"]+.ngx-span-checkbox:focus {
+    outline: none;
+} 
+
 .ngx-checkbox-default {
     border: 1px solid black;
     border-radius: 2px;
 }
+
+.ngx-checkbox-focus-default {
+    box-shadow: 0 0 0.5pt 0.5pt rgb(29, 174, 231);
+}
+
+
+

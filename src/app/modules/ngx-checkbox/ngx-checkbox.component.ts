@@ -12,7 +12,9 @@ export class NgxCheckboxComponent {
   @Input() iconClass: string;
   @Input() checkedClass: string;
   @Input() nocheckedClass: string;
+  @Input() focusClass: string;
   @Input() size: number = 16;
+  @Input() tabIndex: number;
 
   @Output() isClicked = new EventEmitter();
 
@@ -37,4 +39,12 @@ export class NgxCheckboxComponent {
     // Call Directive and do the action
     this.element.setCheckbox(status);
   }
+
+  setFocusClass() {
+
+    // Set/Remove Focus Class
+    this.element.setFocusClass(this.focusClass);
+
+  }
+
 }
