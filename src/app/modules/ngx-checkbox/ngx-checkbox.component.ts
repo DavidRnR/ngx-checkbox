@@ -15,6 +15,7 @@ export class NgxCheckboxComponent {
   @Input() focusClass: string;
   @Input() size: number = 16;
   @Input() tabIndex: number;
+  @Input() id: number;
 
   @Output() isClicked = new EventEmitter();
 
@@ -27,6 +28,18 @@ export class NgxCheckboxComponent {
    */
   onActionClick(event) {
     this.isClicked.emit(event);
+  }
+
+  /**
+   * Emit Key Space pressed
+   * @param event 
+   */
+  onKeyPress(event) {
+    // If key is Space
+    if (event.keyCode === 32) {
+      this.isClicked.emit(event);
+    }
+
   }
 
   /**

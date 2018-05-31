@@ -23,7 +23,7 @@ export class NgxCheckboxDirective implements AfterViewInit {
     }
 
     /**
-     * Set the element checked or not and then apply the style
+     * Set the element by param, checked or not and then apply the style
      * @param status 
      */
     setCheckbox(status) {
@@ -37,6 +37,21 @@ export class NgxCheckboxDirective implements AfterViewInit {
             this.setAttributes('aria-checked', 'false');
             this.setStyle();
         }
+    }
+
+    /**
+     * After Press Key-Space set Clicked/No-Clicked
+     */
+    setCheckboxByKeyPressed() {
+       let status: string = '';
+
+       if (this.element.nativeElement.children[0].checked) {
+           status = 'no-checked'
+       }
+       else {
+           status = 'checked';
+       }
+       this.setCheckbox(status);
     }
 
     /**
@@ -124,5 +139,16 @@ export class NgxCheckboxDirective implements AfterViewInit {
      */
     @HostListener('click', ['$event']) public onClickCheckbox(evt) {
         this.setStyle();
+    }
+
+    /**
+     * After key-space pressed in the Input-Checkbox call setStyle
+     * @param evt 
+     */
+    @HostListener('keypress', ['$event']) public onKeyPressCheckbox(evt) {
+        // If key is Space
+        if(evt.keyCode === 32 ) {
+            this.setCheckboxByKeyPressed();
+        }
     }
 }

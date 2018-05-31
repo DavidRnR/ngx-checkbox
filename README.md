@@ -27,6 +27,19 @@ import { NgxCheckboxModule } from 'ngx-checkbox';
 })
 ```
 
+#### API:
+<ul>
+  <li>@Input() isChecked: boolean;</li>
+  <li>@Input() iconClass: string;</li>
+  <li>@Input() checkedClass: string;</li>
+  <li>@Input() nocheckedClass: string;</li>
+  <li>@Input() focusClass: string;</li>
+  <li>@Input() size: number = 16; // default </li>
+  <li>@Input() tabIndex: number;</li>
+  <li>@Input() id: number;</li>
+  <li> @Output() isClicked = new EventEmitter();</li> 
+</ul>
+
 #### Add component to your page:
 ```
     <!-- Example with FontAwesome icon-->
@@ -67,6 +80,14 @@ import { NgxCheckboxModule } from 'ngx-checkbox';
      border-radius: 2px;
     }
 ```
+
+#### Add an ID to implement with a label.
+```
+ <!--  Example with FontAwesome icon && Label by ID-->
+        <label for="my-checkbox-id" class="label-example">Label Checkbox</label>
+        <ngx-checkbox [iconClass]="'fas fa-check'" [id]="'my-checkbox-id'"> </ngx-checkbox>
+```
+
 #### Set Size
 ```
     <!-- Example with FontAwesome icon -->

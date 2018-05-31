@@ -38,3 +38,7 @@ ngx-checkbox {
     margin-right: 15px;
 }
 
+.label-example {
+    margin-left: 15px;
+    color: orange;
+}
