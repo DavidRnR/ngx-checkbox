@@ -7,9 +7,9 @@ import { NgxCheckboxComponent } from './modules/ngx-checkbox/ngx-checkbox.compon
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showMessage: boolean = false;
+  showMessage = false;
 
-  @ViewChild('myCheckbox') myCB: NgxCheckboxComponent;
+  @ViewChild('myCheckbox', { static: false }) myCB: NgxCheckboxComponent;
 
   @ViewChildren('myMultiCheckbox') myMultiCB: QueryList<NgxCheckboxComponent>;
 

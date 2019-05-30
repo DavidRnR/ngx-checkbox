@@ -13,13 +13,13 @@ export class NgxCheckboxComponent {
   @Input() checkedClass: string;
   @Input() nocheckedClass: string;
   @Input() focusClass: string;
-  @Input() size: number = 16;
+  @Input() size = 16;
   @Input() tabIndex: number;
   @Input() id: number;
 
   @Output() isClicked = new EventEmitter();
 
-  @ViewChild(NgxCheckboxDirective) element;
+  @ViewChild(NgxCheckboxDirective, { static: false }) element;
 
   constructor() { }
 
