@@ -8,8 +8,8 @@ import { NgxCheckboxComponent } from './modules/ngx-checkbox/ngx-checkbox.compon
 })
 export class AppComponent {
   showMessage = false;
-
-  @ViewChild('myCheckbox', { static: false }) myCB: NgxCheckboxComponent;
+  clicked = false;
+  @ViewChild('myCheckbox') myCB: NgxCheckboxComponent;
 
   @ViewChildren('myMultiCheckbox') myMultiCB: QueryList<NgxCheckboxComponent>;
 
@@ -19,13 +19,15 @@ export class AppComponent {
 
   onSetCheckBox() {
     // Set 'checked' or 'no-checked'
-    this.myCB.setClick('checked');
+    // this.myCB.setClick(true);
+    this.clicked = !this.clicked;
+    console.log(this.myCB.isChecked);
   }
 
   onSetMultiCheckBox() {
     // Set 'checked' or 'no-checked'
     this.myMultiCB.forEach((cb: NgxCheckboxComponent) => {
-      cb.setClick('no-checked');
+      cb.setClick(false);
     });
   }
 }

@@ -62,7 +62,7 @@
         Example with FontAwesome icon && Set clicked from Typescript
 
         <!-- Example with FontAwesome icon && Set clicked from Typescript-->
-        <ngx-checkbox [iconClass]="'fas fa-check'" #myCheckbox> </ngx-checkbox>   
+        <ngx-checkbox [iconClass]="'fas fa-check'" #myCheckbox [isChecked]="clicked"> </ngx-checkbox>   
             <div class="button-row">
                 <button mat-raised-button color="primary" (click)="onSetCheckBox()">Set clicked</button>
             </div>

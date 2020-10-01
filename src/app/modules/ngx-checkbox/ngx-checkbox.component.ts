@@ -19,7 +19,7 @@ export class NgxCheckboxComponent {
 
   @Output() isClicked = new EventEmitter();
 
-  @ViewChild(NgxCheckboxDirective, { static: false }) element;
+  @ViewChild(NgxCheckboxDirective) element;
 
   constructor() { }
 
@@ -44,11 +44,9 @@ export class NgxCheckboxComponent {
 
   /**
    * Set Status of the Checkbox. 
-   * status values: 'checked' or 'no-checked'
    * @param status 
    */
-  setClick(status: string) {
-
+  setClick(status: boolean) {
     // Call Directive and do the action
     this.element.setCheckbox(status);
   }

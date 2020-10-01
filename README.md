@@ -112,8 +112,8 @@ import { NgxCheckboxModule } from 'ngx-checkbox';
     @ViewChild('myCheckbox') myCB: NgxCheckboxComponent;
 
     onSetCheckBox() {
-        // Set 'checked' or 'no-checked'
-        this.myCB.setClick('checked');
+        // Set true or false
+        this.myCB.setClick(true);
         }
     }
 ```
