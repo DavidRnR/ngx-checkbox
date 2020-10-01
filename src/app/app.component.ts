@@ -19,9 +19,7 @@ export class AppComponent {
 
   onSetCheckBox() {
     // Set 'checked' or 'no-checked'
-    // this.myCB.setClick(true);
     this.clicked = !this.clicked;
-    console.log(this.myCB.isChecked);
   }
 
   onSetMultiCheckBox() {
