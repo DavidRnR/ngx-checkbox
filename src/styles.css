@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .checkbox-checked {
     background-color: goldenrod;
     border: 1px solid goldenrod;
@@ -36,6 +38,11 @@
 ngx-checkbox {
     margin-left: 15px;
     margin-right: 15px;
+}
+
+mat-list-item {
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .label-example {

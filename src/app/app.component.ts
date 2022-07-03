@@ -1,5 +1,5 @@
-import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { NgxCheckboxComponent } from './modules/ngx-checkbox/ngx-checkbox.component';
+import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { NgxCheckboxComponent } from 'projects/ngx-checkbox/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,11 @@ import { NgxCheckboxComponent } from './modules/ngx-checkbox/ngx-checkbox.compon
 export class AppComponent {
   showMessage = false;
   clicked = false;
-  @ViewChild('myCheckbox') myCB: NgxCheckboxComponent;
-
-  @ViewChildren('myMultiCheckbox') myMultiCB: QueryList<NgxCheckboxComponent>;
-
-  onShowMessage(event) {
+  @ViewChild('myCheckbox') myCB!: NgxCheckboxComponent;
+  
+  @ViewChildren('myMultiCheckbox') myMultiCB!: QueryList<NgxCheckboxComponent>;
+  
+  onShowMessage(event: MouseEvent) {
     this.showMessage = !this.showMessage;
   }
 
