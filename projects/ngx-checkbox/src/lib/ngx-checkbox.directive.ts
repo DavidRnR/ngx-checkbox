@@ -5,8 +5,8 @@ import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angu
 })
 export class NgxCheckboxDirective implements AfterViewInit {
 
-    @Input() checkedClass: string;
-    @Input() nocheckedClass: string;
+    @Input() checkedClass!: string;
+    @Input() nocheckedClass!: string;
 
     private defaultClass: string = 'ngx-checkbox-default';
     private defaultfocusClass: string = 'ngx-checkbox-focus-default'
@@ -27,31 +27,16 @@ export class NgxCheckboxDirective implements AfterViewInit {
      * @param status 
      */
     setCheckbox(status: boolean) {
-        console.log('innnn', status);
-
-        if (status) {
-            this.element.nativeElement.children[0].checked = true;
-            this.setAttributes('aria-checked', 'true');
-            this.setStyle();
-        } else {
-            this.element.nativeElement.children[0].checked = false;
-            this.setAttributes('aria-checked', 'false');
-            this.setStyle();
-        }
+        this.element.nativeElement.children[0].checked = status;
+        this.setAttributes('aria-checked', status);
+        this.setStyle();
     }
 
     /**
      * After Press Key-Space set Clicked/No-Clicked
      */
     setCheckboxByKeyPressed() {
-        let status: boolean;
-
-        if (this.element.nativeElement.children[0].checked) {
-            status = false;
-        }
-        else {
-            status = true;
-        }
+        const status: boolean = !this.element.nativeElement.children[0].checked;
         this.setCheckbox(status);
     }
 
@@ -59,24 +44,14 @@ export class NgxCheckboxDirective implements AfterViewInit {
      * Set Focus Class if Exist
      */
     setFocusClass(focusClass: string) {
-        if (focusClass) {
-            if (!this.hasClass(this.element.nativeElement, focusClass)) {
-                this.element.nativeElement.className += ' ' + focusClass;
-            }
-            else {
-                this.element.nativeElement.classList.remove(focusClass);
-            }
+        const fClass = focusClass ?? this.defaultfocusClass;
+
+        if (!this.hasClass(this.element.nativeElement, fClass)) {
+            this.element.nativeElement.classList.add(fClass);
         }
         else {
-            // Set Focus Default 
-            if (!this.hasClass(this.element.nativeElement, this.defaultfocusClass)) {
-                this.element.nativeElement.className += ' ' + this.defaultfocusClass;
-            }
-            else {
-                this.element.nativeElement.classList.remove(this.defaultfocusClass);
-            }
+            this.element.nativeElement.classList.remove(fClass);
         }
-
     }
 
     /**
@@ -86,36 +61,36 @@ export class NgxCheckboxDirective implements AfterViewInit {
 
         if (this.element.nativeElement.children[0].checked) {
             // Set ARIA
-            this.setAttributes('aria-checked', 'true');
+            this.setAttributes('aria-checked', true);
 
             // If there is not a custom class - Set a default
             if (this.checkedClass) {
                 this.element.nativeElement.classList.remove(this.defaultClass);
                 this.element.nativeElement.classList.remove(this.nocheckedClass);
                 if (!this.hasClass(this.element.nativeElement, this.checkedClass)) {
-                    this.element.nativeElement.className += ' ' + this.checkedClass;
+                    this.element.nativeElement.classList.add(this.checkedClass);
                 }
             }
             else if (!this.hasClass(this.element.nativeElement, this.defaultClass)) {
                 this.element.nativeElement.classList.remove(this.nocheckedClass);
-                this.element.nativeElement.className += ' ' + this.defaultClass;
+                this.element.nativeElement.classList.add(this.defaultClass);
             }
         }
         else {
             // Set ARIA
-            this.setAttributes('aria-checked', 'false');
+            this.setAttributes('aria-checked', false);
 
             // If there is not a custom class - Set a default
             if (this.nocheckedClass) {
                 this.element.nativeElement.classList.remove(this.defaultClass);
                 this.element.nativeElement.classList.remove(this.checkedClass);
                 if (!this.hasClass(this.element.nativeElement, this.nocheckedClass)) {
-                    this.element.nativeElement.className += ' ' + this.nocheckedClass;
+                    this.element.nativeElement.classList.add(this.nocheckedClass);
                 }
             }
             else if (!this.hasClass(this.element.nativeElement, this.defaultClass)) {
                 this.element.nativeElement.classList.remove(this.checkedClass);
-                this.element.nativeElement.className += ' ' + this.defaultClass;
+                this.element.nativeElement.classList.add(this.defaultClass);
             }
 
         }
@@ -124,7 +99,7 @@ export class NgxCheckboxDirective implements AfterViewInit {
     /**
      * Set Attributes to the component like ARIA 
      */
-    private setAttributes(attr: string, attrValue: string) {
+    private setAttributes(attr: string, attrValue: string | boolean) {
         // Set Attribute for the <span>
         this.element.nativeElement.children[1].setAttribute(attr, attrValue);
     }
@@ -138,7 +113,7 @@ export class NgxCheckboxDirective implements AfterViewInit {
      * After click in the Input-Checkbox call setStyle
      * @param evt 
      */
-    @HostListener('click', ['$event']) public onClickCheckbox(evt) {
+    @HostListener('click', ['$event']) public onClickCheckbox(evt: MouseEvent) {
         this.setStyle();
     }
 
@@ -146,9 +121,9 @@ export class NgxCheckboxDirective implements AfterViewInit {
      * After key-space pressed in the Input-Checkbox call setStyle
      * @param evt 
      */
-    @HostListener('keypress', ['$event']) public onKeyPressCheckbox(evt) {
+    @HostListener('keypress', ['$event']) public onKeyPressCheckbox(evt: KeyboardEvent) {
         // If key is Space
-        if (evt.keyCode === 32) {
+        if (evt.code === 'Space') {
             this.setCheckboxByKeyPressed();
         }
     }

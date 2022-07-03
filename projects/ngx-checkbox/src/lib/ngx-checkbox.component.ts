@@ -8,25 +8,25 @@ import { NgxCheckboxDirective } from './ngx-checkbox.directive';
 })
 export class NgxCheckboxComponent {
 
-  @Input() isChecked: boolean;
-  @Input() iconClass: string;
-  @Input() checkedClass: string;
-  @Input() nocheckedClass: string;
-  @Input() focusClass: string;
+  @Input() isChecked!: boolean;
+  @Input() iconClass!: string;
+  @Input() checkedClass!: string;
+  @Input() nocheckedClass!: string;
+  @Input() focusClass!: string;
   @Input() size = 16;
-  @Input() tabIndex: number;
-  @Input() id: number;
+  @Input() tabIndex!: number;
+  @Input() id!: number | string;
 
   @Output() isClicked = new EventEmitter();
 
-  @ViewChild(NgxCheckboxDirective) element;
+  @ViewChild(NgxCheckboxDirective) element: any;
 
   constructor() { }
 
   /**
    * Emit Click
    */
-  onActionClick(event) {
+  onActionClick(event: MouseEvent) {
     this.isClicked.emit(event);
   }
 
@@ -34,9 +34,9 @@ export class NgxCheckboxComponent {
    * Emit Key Space pressed
    * @param event 
    */
-  onKeyPress(event) {
+  onKeyPress(event: KeyboardEvent) {
     // If key is Space
-    if (event.keyCode === 32) {
+    if (event.code === 'Space') {
       this.isClicked.emit(event);
     }
 

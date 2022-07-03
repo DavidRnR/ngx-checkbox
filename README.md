@@ -13,7 +13,7 @@ Set your icon and style.
 
 Install `ngx-checkbox` from `npm`:
 ```bash
-npm install ngx-checkbox --save
+npm i ngx-checkbox
 ```
 
 #### Add to NgModule imports:
